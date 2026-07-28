@@ -14,16 +14,22 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Kotlin Compiler
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Install Kotlin Compiler
       run: |
         choco install kotlin -y
 
-    - name: Compile and Run Kotlin files recursively
+    - name: Compile and Run Kotlin files
       shell: powershell
       run: |
-        $files = Get-ChildItem -Path src -Filter *.kt -Recururse | Select-Object -ExpandProperty FullName
+        $files = Get-ChildItem -Path src -Filter *.kt -Recurse | Select-Object -ExpandProperty FullName
+        
         if ($files) {
-            foreach ($file in $files) {
-                kotlinc -script $file
-            }
+            kotlinc $files -include-runtime -d app.jar
+            java -jar app.jar
         }
