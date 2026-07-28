@@ -20,14 +20,15 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Set up Kotlin Compiler
-      uses: fwilhe/setup-kotlin@v1
-
     - name: Compile and Run Kotlin files
       shell: powershell
       run: |
         $files = Get-ChildItem -Path src -Filter *.kt -Recurse | Select-Object -ExpandProperty FullName
+        
         if ($files) {
+            $files | ForEach-Object { Write-Output " - $_" }
+            
             kotlinc $files -include-runtime -d app.jar
+            
             java -jar app.jar
         }
