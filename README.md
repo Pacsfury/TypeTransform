@@ -13,7 +13,19 @@ I made it to learn more about Kotlin, as it's a programming language I have alwa
 
 ## What works so far
 
-* Simple INI to IR
+* Simple INI to IR:
+```INI
+[TEST]
+willitwork=true
+indeedseemstowork=ye,butsomeriskythings
+whatdoyoumean=drops,strangerulesthatseemtoalwaysworkuntiltheydont
+[AHHH]
+idc=true++
+```
+generates
+```
+TEST: {willitwork:true,indeedseemstowork:ye,butsomeriskythings,whatdoyoumean:drops,strangerulesthatseemtoalwaysworkuntiltheydont} AHHH: {idc:true++}
+```
 
 ## Roadmap: what can you expect
 
