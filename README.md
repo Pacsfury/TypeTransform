@@ -11,6 +11,10 @@ TypeTransform aims to be an easy yet useful way to transform data. It will trans
 
 I made it to learn more about Kotlin, as it's a programming language I have always wanted to test.
 
+## What works so far
+
+* Simple INI to IR
+
 ## Roadmap: what can you expect
 
 Right now, TypeTransform is on very inital stage, so this is what I planned for its future:
