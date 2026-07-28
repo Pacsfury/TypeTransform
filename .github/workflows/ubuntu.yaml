@@ -14,13 +14,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Kotlin Compiler
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Install Kotlin Compiler
       run: |
         sudo snap install --classic kotlin
 
-    - name: Compile and Run Kotlin files recursively
+    - name: Compile and Run Kotlin files
       run: |
         find src -name "*.kt" > sources.txt
+        
         if [ -s sources.txt ]; then
-          kotlinc -script $(cat sources.txt)
+          kotlinc $(cat sources.txt) -include-runtime -d app.jar
+          java -jar app.jar
         fi
