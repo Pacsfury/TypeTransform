@@ -26,9 +26,10 @@ jobs:
 
     - name: Compile and Run Kotlin files
       run: |
-        find src -name "*.kt" > sources.txt
+        SOURCES=$(find src/core -name "*.kt" | tr '\n' ' ')
         
-        if [ -s sources.txt ]; then
-          kotlinc $(cat sources.txt) -include-runtime -d app.jar
+        if [ ! -z "$SOURCES" ]; then
+          kotlinc $SOURCES -include-runtime -d app.jar
           java -jar app.jar
         fi
+
