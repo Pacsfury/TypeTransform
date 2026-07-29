@@ -1,12 +1,12 @@
 fun main() {
-    println(iniToIR(
+    println(IRToIni(iniToIR(
 """[TEST]
 willitwork=true
 indeedseemstowork=ye,butsomeriskythings
 whatdoyoumean=drops,strangerulesthatseemtoalwaysworkuntiltheydont
 [AHHH]
 idc=true++"""
-    ))
+    )))
 }
 
 fun getNextStr(text: String): String {
@@ -66,3 +66,28 @@ fun iniToIR(text: String): String {
     result = result.drop(2)
     return result
 }
+
+fun IRToIni(text: String): String {
+    val formatText = "} $text" 
+    val sections = formatText.split("} ")
+    var result = ""
+
+    for (section in sections) {
+        if (section.isEmpty()) continue
+        
+        val parts = section.split(": {")
+        val sectionName = parts[0].trim()
+        val content = parts[1].removeSuffix("}").trim()
+        
+        result += "[$sectionName]\n"
+        
+        val pairs = content.split(",")
+        for (pair in pairs) {
+            if (pair.isNotEmpty()) {
+                result += "${pair.replaceFirst(':', '=')}\n"
+            }
+        }
+    }
+    return result.trimEnd()
+}
+
