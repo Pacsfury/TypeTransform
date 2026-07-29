@@ -42,8 +42,10 @@ fun IRToIni(text: String): String {
         if (section.isEmpty()) continue
         
         val parts = section.split(": {")
+        if (parts.size < 2) continue
+        
         val sectionName = parts[0].trim()
-        val content = parts[1].removeSuffix("}").trim()
+        val content = parts[1].removeSuffix("}").trim() 
         
         result += "[$sectionName]\n"
         
@@ -56,4 +58,3 @@ fun IRToIni(text: String): String {
     }
     return result.trimEnd()
 }
-

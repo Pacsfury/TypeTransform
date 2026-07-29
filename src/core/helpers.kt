@@ -10,7 +10,7 @@ fun getIR(text: String, from: String): String {
 
 fun getResult(ir: String, to: String): String {
     if (to.uppercase()=="INI") {
-        return IRToIni(to)
+        return IRToIni(ir)
     } else {
         return "Error: check the name"
     }
