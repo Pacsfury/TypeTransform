@@ -35,6 +35,4 @@ Right now, TypeTransform is on very inital stage, so this is what I planned for 
 * YAML <-> IR
 * TOML <-> IR
 * CSV  <-> IR
-* Multifiles
-* Ask and print text instead of content being hardcoded
 * GUI
