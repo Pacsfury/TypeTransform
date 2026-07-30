@@ -27,12 +27,14 @@ generates
 TEST: {willitwork:true,indeedseemstowork:ye,butsomeriskythings,whatdoyoumean:drops,strangerulesthatseemtoalwaysworkuntiltheydont} AHHH: {idc:true++}
 ```
 * Simple IR to Ini (opposite of last example)
+* Simple IR <-> TOML
+
+> All transformations are indev and not really well done.
 
 ## Roadmap: what can you expect
 
 Right now, TypeTransform is on very inital stage, so this is what I planned for its future:
 * JSON <-> IR
 * YAML <-> IR
-* TOML <-> IR
 * CSV  <-> IR
 * GUI

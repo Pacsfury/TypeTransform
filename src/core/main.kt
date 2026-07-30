@@ -10,5 +10,5 @@ fun main() {
     println("Convert to: ")
     val destiny = readln().trim()
     
-    println("\n\nResult: ${getResult(getIR(content, origin), destiny)}")
+    println("\n\nResult: \n${getResult(getIR(content, origin), destiny)}")
 }
